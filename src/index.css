@@ -1,8 +1,11 @@
-.CarForm {
+.CarForm-container,
+.car-general-info {
   padding: 10px;
-  border: 1px solid black;
 }
 .car-form-item {
   margin-top: 1em;
-  padding: 1em;
+  padding: 1em 0em;
+}
+.car-general-info__label {
+  width: 30%;
 }
