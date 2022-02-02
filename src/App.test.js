@@ -1,8 +1,13 @@
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+
+describe ('Given the App component', () => {
+  test('render the App', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText(/Calcula tu coche/i);
   expect(linkElement).toBeInTheDocument();
 });
+})
+
