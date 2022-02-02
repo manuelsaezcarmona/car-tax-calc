@@ -8,7 +8,6 @@ export function CarInfo() {
             <thead className='table-secondary'>
               <tr>
               <th className=" "colSpan="2">Datos del Vehiculo</th>
-
               </tr>
             </thead>
             <tbody>

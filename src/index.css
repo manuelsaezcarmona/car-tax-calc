@@ -9,3 +9,7 @@
 .car-general-info__label {
   width: 30%;
 }
+
+.car-taxes-info__value {
+  text-align: right;
+}
