@@ -1,10 +1,11 @@
 
+import { Container } from 'react-bootstrap';
 import './App.css';
 import {TaxCalcPage} from './pages/TaxCalcPage'
 
 function App() {
   return (
-    <div className="App">
+    <Container fluid>
       <header className="App-header">
         <h1>Calcula tu coche</h1>
         <p>
@@ -13,7 +14,7 @@ function App() {
 
       </header>
       <TaxCalcPage />
-    </div>
+    </Container>
   );
 }
 
