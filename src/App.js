@@ -1,6 +1,6 @@
 
 import './App.css';
-import Button from '@mui/material/Button';
+import {TaxCalcPage} from './pages/TaxCalcPage'
 
 function App() {
   return (
@@ -12,10 +12,7 @@ function App() {
         </p>
 
       </header>
-      <main>
-        <h2>Aqui va a ir la app </h2>
-        <Button variant="contained">Hello World</Button>;
-      </main>
+      <TaxCalcPage />
     </div>
   );
 }
