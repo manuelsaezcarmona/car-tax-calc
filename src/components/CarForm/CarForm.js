@@ -1,18 +1,27 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form'
 import { brands, fuel, sampleModels } from '../../services/data'
+ // import {getCars} from '../../services/cars.services'
 
 export function CarForm() {
+
+  const handleChange = (evt) => console.log(typeof evt.target.value )
+
   return (
-  <div className='CarForm-container'>
-
-
+   <div className='CarForm-container'>
 
       <Form className='car-form'>
          <Form.Group className="car-form-item" >
            <Form.Label>Fecha de Primera Matriculación</Form.Label>
-            <Form.Control className= "car-form-item" type="date" placeholder='Fecha de primera matriculación'/>
+            <Form.Control
+                className= "car-form-item"
+                type="date"
+                format="dd/MM/yyyy"
+                placeholder='Fecha de primera matriculación'
+                value="12/01/2022"
+                onChange={handleChange}/>
         </Form.Group>
+
         <Form.Group className="car-form-item" >
           <Form.Label>Marca</Form.Label>
             <Form.Select className= "car-form-item__select" >
