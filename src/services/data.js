@@ -1,4 +1,14 @@
 export const brands = [
+  'Alfa Romeo',
+  'BMW',
+  'Dacia',
+  'Fiat',
+  'Ford',
+  'Hyundai',
+  'Renault'
+]
+
+export const brandsObjs = [
   { label: 'Alfa Romeo', value: 'Alfa Romeo'},
   { label: 'BMW', value: 'BMW'},
   { label: 'Dacia', value: 'Dacia'},
@@ -32,8 +42,13 @@ export const labels =
       value: "Valor"
     }
 
-export const sampleInfoCar = [
-
+export const sampleModels = [
+    "GIULIA 2.2 Diesel Aut. 8V 150l",
+    "GIULIA 2.2 Diesel Super 6V 180</option",
+    "GIULIA 2.2 Diesel Veloce Q4 Aut. 8V 210",
+    "GIULIETTA 1.6 JTD Super / JTDm SS 6V 120",
+    "Giuliietta 1.6 JTD 120CV B-TECH",
+    "Giuliietta 1.6 JTD 120CV SPORT"
 ]
 
 export const sampleTaxValue = [
