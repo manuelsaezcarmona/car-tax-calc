@@ -11,6 +11,8 @@ const [formQuery, setformQuery] = useState( {
     brand:'' , enrollmentDate:'', fuel:''
 });
 
+
+
   const handleChange = (evt) => {
     evt.preventDefault();
     setformQuery({...formQuery, [evt.target.name]: evt.target.value});

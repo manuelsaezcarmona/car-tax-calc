@@ -1,14 +1,30 @@
-import {createContext} from 'react'
+import {createContext, useState} from 'react'
+import PropTypes from 'prop-types';
 
 
 
 export const CarsContext = createContext({
-  cars: [],
-  vehicle: {}
+  cars: []
 })
+/*
+cars: [],
+  vehicle: null,
+  models: [],
+  year: null,
+  assessmentTable: null,
+  cogeCars: () => {},
+  setVehicle: () => {} */
 
-
-
-export default function CarsContextProvider() {
-  return <div></div>;
+export function CarsContextProvider({children}) {
+  // eslint-disable-next-line no-unused-vars
+  const [cars, setCars] = useState([]);
+  const context = { cars }
+  return (<CarsContext.Provider value={context}>{children}</CarsContext.Provider>);
 }
+
+CarsContextProvider.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
+};
