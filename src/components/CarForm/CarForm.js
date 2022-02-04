@@ -1,17 +1,17 @@
-import React, { useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import Form from 'react-bootstrap/Form'
 import { brands, fuels, sampleModels } from '../../services/data'
 import {getCars} from '../../services/cars.services'
-
+import {CarsContext} from '../../context/cars.context'
 
 
 export function CarForm() {
+  const carscontext = useContext(CarsContext);
+  const [formQuery, setformQuery] = useState( {
+      brand:'' , enrollmentDate:'', fuel:''
+  });
 
-const [formQuery, setformQuery] = useState( {
-    brand:'' , enrollmentDate:'', fuel:''
-});
-
-
+  console.log(carscontext);
 
   const handleChange = (evt) => {
     evt.preventDefault();
