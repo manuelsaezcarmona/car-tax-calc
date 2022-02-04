@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState} from 'react';
 import Form from 'react-bootstrap/Form'
 import { brands, fuels, sampleModels } from '../../services/data'
-import {getCars} from '../../services/cars.services'
+// import {getCars} from '../../services/cars.services'
 import {CarsContext} from '../../context/cars.context'
 
 
@@ -11,7 +11,7 @@ export function CarForm() {
       brand:'' , enrollmentDate:'', fuel:''
   });
 
-  console.log(carscontext);
+  console.log(carscontext.cars);
 
   const handleChange = (evt) => {
     evt.preventDefault();
@@ -19,16 +19,18 @@ export function CarForm() {
     console.log(evt.target.value)
   }
 
-  useEffect(async () => {
+  useEffect( () => {
     // Comprobamos que todos los campos de consulta se encuentren llenos
     //para llamar a la API
 
     if(!Object.values(formQuery).some(value => value ==='')){
         const { brand, enrollmentDate, fuel} = formQuery;
         console.log('llamamos a la API')
-        const cars = await getCars(brand, enrollmentDate, fuel);
+        // const cars = await getCars(brand, enrollmentDate, fuel);
+        // console.log(cars);
         // Aqui ya tenemos que tirar de contexto en cuento lo implementemos.
-       console.log(cars);
+        carscontext.updateCarts(brand, enrollmentDate, fuel);
+        console.log(carscontext.cars);
     }
   }, [formQuery]);
 
