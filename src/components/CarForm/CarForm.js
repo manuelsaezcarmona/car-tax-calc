@@ -1,40 +1,65 @@
-import React from 'react';
+import React, { useState} from 'react';
 import Form from 'react-bootstrap/Form'
-import { brands, fuel, sampleModels } from '../../services/data'
+import { brands, fuels, sampleModels } from '../../services/data'
  // import {getCars} from '../../services/cars.services'
+
+
 
 export function CarForm() {
 
-  const handleChange = (evt) => console.log(typeof evt.target.value )
+const [formQuery, setformQuery] = useState( {
+    brand:'' , enrollmentDate:'', fuel:''
+});
+
+  const handleChange = (evt) => {
+    evt.preventDefault();
+    setformQuery({...formQuery, [evt.target.name]: evt.target.value});
+    console.log(evt.target.value)
+
+
+  }
+
+/*   useEffect(() => {
+    console.log(formQuery)
+
+
+  }, [formQuery]); */
+
 
   return (
+
    <div className='CarForm-container'>
 
-      <Form className='car-form'>
-         <Form.Group className="car-form-item" >
-           <Form.Label>Fecha de Primera Matriculación</Form.Label>
-            <Form.Control
-                className= "car-form-item"
-                type="date"
-                format="dd/MM/yyyy"
-                placeholder='Fecha de primera matriculación'
-                value="12/01/2022"
-                onChange={handleChange}/>
-        </Form.Group>
+     {console.log(formQuery)}
 
         <Form.Group className="car-form-item" >
           <Form.Label>Marca</Form.Label>
-            <Form.Select className= "car-form-item__select" >
+            <Form.Select name="brand"
+                onChange={handleChange}
+                className= "car-form-item__select" >
               {brands.map((brand => (
-                <option key={brand} value={brand}>{brand}</option>
+                <option   key={brand} value={brand}>{brand}</option>
               )))}
             </Form.Select>
       </Form.Group>
 
+
+     <Form className='car-form'>
+         <Form.Group className="car-form-item" >
+           <Form.Label>Fecha de Primera Matriculación</Form.Label>
+            <Form.Control
+                className= "car-form-item"
+                name="enrollmentDate"
+                type="date"
+                placeholder='Fecha de primera matriculación'
+                value={formQuery.enrollmentDate}
+                onChange={handleChange}/>
+        </Form.Group>
+
       <Form.Group className="car-form-item" >
           <Form.Label>Combustible</Form.Label>
-            <Form.Select className= "car-form-item__select" >
-                   {fuel.map((fuelitem) => (
+            <Form.Select name="fuel" onChange={handleChange}  className= "car-form-item__select" >
+                   {fuels.map((fuelitem) => (
                 <option key={fuelitem.value} value={fuelitem.value}>{fuelitem.label}</option>
               ))}
             </Form.Select>

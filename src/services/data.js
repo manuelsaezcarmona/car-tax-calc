@@ -19,7 +19,7 @@ export const brandsObjs = [
 
 ]
 
-export const fuel = [
+export const fuels = [
   { label: 'Diesel', value: 'D'},
   { label: 'Electrico', value: 'Elc'},
   { label: 'Gasolina', value: 'G'},
