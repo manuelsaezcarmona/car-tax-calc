@@ -2,6 +2,9 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 
 export function CarInfo() {
+
+// const { vehicle } = useContext(CarsContext);
+
   return (
       <div className='car-general-info'>
           <Table className='car-general-info__table table-bordered border-secondary'>

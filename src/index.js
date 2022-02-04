@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
+import {CarsContextProvider} from './context/cars.context'
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CarsContextProvider>
+      <App />
+    </CarsContextProvider>
   </React.StrictMode>,
   document.getElementById('swipoo')
 );

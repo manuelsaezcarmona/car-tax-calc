@@ -19,7 +19,7 @@ export const brandsObjs = [
 
 ]
 
-export const fuel = [
+export const fuels = [
   { label: 'Diesel', value: 'D'},
   { label: 'Electrico', value: 'Elc'},
   { label: 'Gasolina', value: 'G'},
@@ -44,7 +44,7 @@ export const labels =
 
 export const sampleModels = [
     "GIULIA 2.2 Diesel Aut. 8V 150l",
-    "GIULIA 2.2 Diesel Super 6V 180</option",
+    "GIULIA 2.2 Diesel Super 6V 180",
     "GIULIA 2.2 Diesel Veloce Q4 Aut. 8V 210",
     "GIULIETTA 1.6 JTD Super / JTDm SS 6V 120",
     "Giuliietta 1.6 JTD 120CV B-TECH",
