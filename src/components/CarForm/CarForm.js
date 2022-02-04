@@ -8,7 +8,7 @@ import {getCars} from '../../services/cars.services'
 export function CarForm() {
 
 const [formQuery, setformQuery] = useState( {
-    brand:'' , enrollmentDate:'', fuel:'', model:'Elige el modelo'
+    brand:'' , enrollmentDate:'', fuel:''
 });
 
   const handleChange = (evt) => {
@@ -20,6 +20,7 @@ const [formQuery, setformQuery] = useState( {
   useEffect(async () => {
     // Comprobamos que todos los campos de consulta se encuentren llenos
     //para llamar a la API
+
     if(!Object.values(formQuery).some(value => value ==='')){
         const { brand, enrollmentDate, fuel} = formQuery;
         console.log('llamamos a la API')
@@ -34,7 +35,7 @@ const [formQuery, setformQuery] = useState( {
 
    <div className='CarForm-container'>
 
-     {console.log(formQuery)}
+
 
 
         <Form.Group className="car-form-item" >
@@ -63,9 +64,9 @@ const [formQuery, setformQuery] = useState( {
 
       <Form.Group className="car-form-item" >
           <Form.Label>Combustible</Form.Label>
-            <Form.Select name="fuel" onChange={handleChange}  className= "car-form-item__select" >
+            <Form.Select name="fuel" onChange={handleChange} className= "car-form-item__select" >
                    {fuels.map((fuelitem) => (
-                <option key={fuelitem.value} value={fuelitem.value}>{fuelitem.label}</option>
+                <option key={fuelitem.value} value={fuelitem.value} >{fuelitem.label}</option>
               ))}
             </Form.Select>
       </Form.Group>
