@@ -6,7 +6,8 @@ import {getCars} from '../services/cars.services'
 
 export const CarsContext = createContext({
   cars: [],
-  updateCarts: () =>{}
+  updateCarts: () =>{},
+  models: []
 })
 /*
 cars: [],
@@ -18,15 +19,20 @@ cars: [],
   setVehicle: () => {} */
 
 export function CarsContextProvider({children}) {
-  // eslint-disable-next-line no-unused-vars
+
   const [cars, setCars] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [models, setModels] = useState([]);
 
   const updateCarts =  async (brand, enrollmentDate, fuel) => {
     const carsUpdated = await getCars(brand, enrollmentDate, fuel);
-      setCars(carsUpdated);
+    const modelsUpdated = carsUpdated.cars.map(car => car.model)
+
+      setCars(carsUpdated.cars);
+      setModels(modelsUpdated);
   }
 
-  const context = { cars, updateCarts }
+  const context = { cars, updateCarts, models }
   return (<CarsContext.Provider value={context}>{children}</CarsContext.Provider>);
 }
 

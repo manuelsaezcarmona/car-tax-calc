@@ -6,12 +6,10 @@ import {CarsContext} from '../../context/cars.context'
 
 
 export function CarForm() {
-  const carscontext = useContext(CarsContext);
+  const {cars, updateCarts, models} = useContext(CarsContext);
   const [formQuery, setformQuery] = useState( {
       brand:'' , enrollmentDate:'', fuel:''
   });
-
-  console.log(carscontext.cars);
 
   const handleChange = (evt) => {
     evt.preventDefault();
@@ -26,11 +24,8 @@ export function CarForm() {
     if(!Object.values(formQuery).some(value => value ==='')){
         const { brand, enrollmentDate, fuel} = formQuery;
         console.log('llamamos a la API')
-        // const cars = await getCars(brand, enrollmentDate, fuel);
-        // console.log(cars);
         // Aqui ya tenemos que tirar de contexto en cuento lo implementemos.
-        carscontext.updateCarts(brand, enrollmentDate, fuel);
-        console.log(carscontext.cars);
+        updateCarts(brand, enrollmentDate, fuel)
     }
   }, [formQuery]);
 
@@ -38,17 +33,15 @@ export function CarForm() {
   return (
 
    <div className='CarForm-container'>
-
-
-
-
+      {console.log(cars)}
+      {console.log(models)}
         <Form.Group className="car-form-item" >
           <Form.Label>Marca</Form.Label>
             <Form.Select name="brand"
                 onChange={handleChange}
                 className= "car-form-item__select" >
               {brands.map((brand => (
-                <option   key={brand} value={brand}>{brand}</option>
+                <option  key={brand} value={brand}>{brand}</option>
               )))}
             </Form.Select>
       </Form.Group>
