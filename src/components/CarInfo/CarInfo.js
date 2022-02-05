@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import { Table } from 'react-bootstrap';
 import { VehicleContext } from '../../context/vehicle.context'
+import { fuels} from '../../services/data'
 
 export function CarInfo() {
 
@@ -33,7 +34,11 @@ export function CarInfo() {
                 </tr>
                   <tr>
                   <td className='car-general-info__label'>Combustible</td>
-                  <td className='car-general-info__data'>{vehicle.fuel}</td>
+                  <td className='car-general-info__data'>
+                    { fuels.find(fuel => fuel.value ===vehicle.fuel)
+
+                  }
+                  </td>
                 </tr>
                   <tr>
                   <td className='car-general-info__label'>Potencia(Kw)</td>

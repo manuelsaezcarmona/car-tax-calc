@@ -13,7 +13,10 @@ export const VehicleContext = createContext({
 
    const setCar = (cars, modelo) => {
       const car = cars.filter( car => car.model === modelo)[0];
-      const tempCar = {...car, yearTax: +car.period.slice(0, 4)}
+      const tempCar = {...car,
+        yearTax: +car.period.slice(0, 4),
+        labelfuel: setFuelLabel(car.fuel)
+      }
       const table = createAmortizationTable(tempCar);
       const finalCar = {...tempCar, amortable: table};
       setvehicle(finalCar)
@@ -57,4 +60,23 @@ function createAmortizationTable(car){
 
 function currency(number){
     return new Intl.NumberFormat('de-DE', {style: 'currency',currency: 'EUR', minimumFractionDigits: 2}).format(number);
+}
+
+function setFuelLabel(fuel){
+  switch (fuel) {
+    case 'D':
+      return 'Diesel'
+    case 'Elc':
+      return 'Electrico'
+    case 'G':
+      return 'Gasolina'
+    case 'S':
+      return 'Super'
+    case 'DyE':
+      return 'Hibrido Diesel'
+    case 'GyE':
+      return 'Hibrido Gasolina'
+    default:
+      break;
+  }
 }
