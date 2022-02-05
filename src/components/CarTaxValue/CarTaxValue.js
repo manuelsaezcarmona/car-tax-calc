@@ -1,10 +1,19 @@
-import React from 'react';
+
+import React, {useContext} from 'react';
 import { Table } from 'react-bootstrap';
+import { VehicleContext } from '../../context/vehicle.context'
 
 export  function CarTaxValue() {
+
+  const { vehicle } = useContext(VehicleContext);
+
   return (
 
   <div className='car-taxes-info'>
+    {vehicle.amortable !== undefined
+
+    ?
+
     <Table striped className='car-general-info__table table-bordered border-secondary'>
       <thead className='table-success'>
               <tr>
@@ -12,33 +21,19 @@ export  function CarTaxValue() {
               </tr>
       </thead>
        <tbody>
-           <tr>
-                  <td className='car-taxes-info__year'>Valoracion BOE - 2019</td>
-                  <td className='car-taxes-info__value'>28.500 €</td>
-          </tr>
-           <tr>
-                  <td className='car-taxes-info__year'>Año 2020</td>
-                  <td className='car-taxes-info__value'>26.650 €</td>
-          </tr>
-          <tr>
-                  <td className='car-taxes-info__year'>Año 2021</td>
-                  <td className='car-taxes-info__value'>22.800 €</td>
-          </tr>
-          <tr>
-                  <td className='car-taxes-info__year'>Año 2022</td>
-                  <td className='car-taxes-info__value'>19.950 €</td>
-          </tr>
-          <tr>
-                  <td className='car-taxes-info__year'>Año 2023</td>
-                  <td className='car-taxes-info__value'>17.100 €</td>
-          </tr>
-          <tr>
-                  <td className='car-taxes-info__year'>Año 2024</td>
-                  <td className='car-taxes-info__value'>14.250 €</td>
-          </tr>
-       </tbody>
-    </Table>
+          {vehicle.amortable.map( item => (
 
+        <tr key={item.year+'_cuote'}>
+                  <td  className='car-taxes-info__year'>Año {item.year} - {item.coeficiente}%</td>
+                  <td  className='car-taxes-info__value'>{item.valueTaxYear}</td>
+          </tr>
+
+            ))}
+       </tbody>
+
+    </Table>
+    : <p className='alert alert-warning text-center'>Elige un Coche para saber su amortizacion</p>
+   }
   </div>
   );
 }

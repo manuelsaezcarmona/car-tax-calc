@@ -52,10 +52,12 @@ export const sampleModels = [
 ]
 
 export const sampleTaxValue = [
-  {year:"2019", value:28500 },
-  {year:"2020", value:26650 },
-  {year:"2021", value:22800 },
-  {year:"2022", value:19950 },
-  {year:"2023", value:17100 },
-  {year:"2024", value:14250 }
+  {year:"2019", valueTaxYear:28500 },
+  {year:"2020", valueTaxYear:26650 },
+  {year:"2021", valueTaxYear:22800 },
+  {year:"2022", valueTaxYear:19950 },
+  {year:"2023", valueTaxYear:17100 },
+  {year:"2024", valueTaxYear:14250 }
 ]
+
+

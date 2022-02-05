@@ -1,15 +1,32 @@
 import React, { useContext, useEffect, useState} from 'react';
 import Form from 'react-bootstrap/Form'
-import { brands, fuels, sampleModels } from '../../services/data'
-// import {getCars} from '../../services/cars.services'
+import { brands, fuels } from '../../services/data'
 import {CarsContext} from '../../context/cars.context'
+import {VehicleContext} from '../../context/vehicle.context'
 
 
 export function CarForm() {
   const {cars, updateCarts, models} = useContext(CarsContext);
+  const {setCar} = useContext(VehicleContext);
+  const [modelForm, setmodelForm] = useState('');
   const [formQuery, setformQuery] = useState( {
       brand:'' , enrollmentDate:'', fuel:''
   });
+
+  const handleChangeModel = (evt) => {
+    evt.preventDefault();
+    setmodelForm(evt.target.value);
+  }
+
+
+useEffect(() => {
+  if (modelForm !=='') {
+    setCar(cars, modelForm);
+  }
+
+}, [modelForm]);
+
+
 
   const handleChange = (evt) => {
     evt.preventDefault();
@@ -20,10 +37,8 @@ export function CarForm() {
   useEffect( () => {
     // Comprobamos que todos los campos de consulta se encuentren llenos
     //para llamar a la API
-
     if(!Object.values(formQuery).some(value => value ==='')){
         const { brand, enrollmentDate, fuel} = formQuery;
-        console.log('llamamos a la API')
         // Aqui ya tenemos que tirar de contexto en cuento lo implementemos.
         updateCarts(brand, enrollmentDate, fuel)
     }
@@ -33,8 +48,8 @@ export function CarForm() {
   return (
 
    <div className='CarForm-container'>
-      {console.log(cars)}
-      {console.log(models)}
+
+
         <Form.Group className="car-form-item" >
           <Form.Label>Marca</Form.Label>
             <Form.Select name="brand"
@@ -70,10 +85,12 @@ export function CarForm() {
 
        <Form.Group className="car-form-item" >
           <Form.Label>Modelo</Form.Label>
-            <Form.Select className= "car-form-item__select" >
-                {sampleModels.map((model => (
-                <option key={model} value={model}>{model}</option>
-              )))}
+            <Form.Select name="model" onChange={handleChangeModel} className= "car-form-item__select" >
+
+              {models.length
+                ? models.map((model => (<option key={model} value={model}>{model}</option>)))
+                : <option key="model-empty" value="empty">Rellena los campos</option>
+              }
             </Form.Select>
       </Form.Group>
 
