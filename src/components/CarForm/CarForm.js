@@ -2,22 +2,35 @@ import React, { useContext, useEffect, useState} from 'react';
 import Form from 'react-bootstrap/Form'
 import { brands, fuels } from '../../services/data'
 import {CarsContext} from '../../context/cars.context'
+import {VehicleContext} from '../../context/vehicle.context'
 
 
 export function CarForm() {
   const {cars, updateCarts, models} = useContext(CarsContext);
+  const {setCar} = useContext(VehicleContext);
   const [modelForm, setmodelForm] = useState('');
   const [formQuery, setformQuery] = useState( {
       brand:'' , enrollmentDate:'', fuel:''
   });
 
   const handleChangeModel = (evt) => {
-    evt.preventDefault()
-    setmodelForm(evt.target.value)
-     const carArr = cars.filter( car => car.model === evt.target.value);
+    evt.preventDefault();
 
-    console.log(carArr)
+    setmodelForm(evt.target.value);
+     // const carArr = cars.filter( car => car.model === evt.target.value)[0];
+      // const vehicle = carArr[0];
+    // console.log(carArr);
+
   }
+
+
+useEffect(() => {
+  if (modelForm !=='') {
+    setCar(cars, modelForm);
+  }
+
+}, [modelForm]);
+
 
 
   const handleChange = (evt) => {
@@ -41,7 +54,7 @@ export function CarForm() {
 
    <div className='CarForm-container'>
 
-    {console.log(modelForm)}
+
         <Form.Group className="car-form-item" >
           <Form.Label>Marca</Form.Label>
             <Form.Select name="brand"
