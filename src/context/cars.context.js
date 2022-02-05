@@ -9,14 +9,6 @@ export const CarsContext = createContext({
   updateCarts: () =>{},
   models: []
 })
-/*
-cars: [],
-  vehicle: null,
-  models: [],
-  year: null,
-  assessmentTable: null,
-  cogeCars: () => {},
-  setVehicle: () => {} */
 
 export function CarsContextProvider({children}) {
 
@@ -27,7 +19,6 @@ export function CarsContextProvider({children}) {
   const updateCarts =  async (brand, enrollmentDate, fuel) => {
     const carsUpdated = await getCars(brand, enrollmentDate, fuel);
     const modelsUpdated = carsUpdated.cars.map(car => car.model)
-
       setCars(carsUpdated.cars);
       setModels(modelsUpdated);
   }

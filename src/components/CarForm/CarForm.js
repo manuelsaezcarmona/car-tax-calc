@@ -25,7 +25,6 @@ export function CarForm() {
 
     if(!Object.values(formQuery).some(value => value ==='')){
         const { brand, enrollmentDate, fuel} = formQuery;
-        console.log('llamamos a la API')
         // Aqui ya tenemos que tirar de contexto en cuento lo implementemos.
         updateCarts(brand, enrollmentDate, fuel)
     }
