@@ -1,16 +1,21 @@
 import React, { useContext, useEffect, useState} from 'react';
 import Form from 'react-bootstrap/Form'
 import { brands, fuels } from '../../services/data'
-// import {getCars} from '../../services/cars.services'
 import {CarsContext} from '../../context/cars.context'
 
 
 export function CarForm() {
   const {updateCarts, models} = useContext(CarsContext);
+  const [modelForm, setmodelForm] = useState('');
   const [formQuery, setformQuery] = useState( {
       brand:'' , enrollmentDate:'', fuel:''
   });
 
+  const handleChangeModel = (evt) => {
+    evt.preventDefault()
+    setmodelForm(evt.target.value)
+    console.log(evt.target.value)
+  }
 
 
   const handleChange = (evt) => {
@@ -22,7 +27,6 @@ export function CarForm() {
   useEffect( () => {
     // Comprobamos que todos los campos de consulta se encuentren llenos
     //para llamar a la API
-
     if(!Object.values(formQuery).some(value => value ==='')){
         const { brand, enrollmentDate, fuel} = formQuery;
         // Aqui ya tenemos que tirar de contexto en cuento lo implementemos.
@@ -35,7 +39,7 @@ export function CarForm() {
 
    <div className='CarForm-container'>
 
-
+    {console.log(modelForm)}
         <Form.Group className="car-form-item" >
           <Form.Label>Marca</Form.Label>
             <Form.Select name="brand"
@@ -71,12 +75,10 @@ export function CarForm() {
 
        <Form.Group className="car-form-item" >
           <Form.Label>Modelo</Form.Label>
-            <Form.Select className= "car-form-item__select" >
+            <Form.Select name="model" onChange={handleChangeModel} className= "car-form-item__select" >
 
               {models.length
-                ? models.map((model => (
-                    <option key={model} value={model}>{model}</option>
-                  )))
+                ? models.map((model => (<option key={model} value={model}>{model}</option>)))
                 : <option key="model-empty" value="empty">Rellena los campos</option>
               }
 

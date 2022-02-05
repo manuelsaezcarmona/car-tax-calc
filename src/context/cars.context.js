@@ -13,7 +13,7 @@ export const CarsContext = createContext({
 export function CarsContextProvider({children}) {
 
   const [cars, setCars] = useState([]);
-  // eslint-disable-next-line no-unused-vars
+
   const [models, setModels] = useState([]);
 
   const updateCarts =  async (brand, enrollmentDate, fuel) => {
