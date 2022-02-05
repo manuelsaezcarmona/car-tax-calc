@@ -20,7 +20,7 @@ export const VehicleContext = createContext({
       cvf: "Potencia Fiscal",
       cv: "Potencia (CV)",
       value: "Valor"
-      assessmentTable: [{year: 2019, value: 28.500 €}]
+      amortTable: [{year: 2019, value: 28.500 €}]
       yearTax:
   }
   */
@@ -31,7 +31,10 @@ export const VehicleContext = createContext({
 
    const setCar = (cars, modelo) => {
       const car = cars.filter( car => car.model === modelo)[0];
-      setvehicle(car)
+      const tempCar = {...car, yearTax: +car.period.slice(0, 4)}
+      const table = createAmortizationTable(tempCar);
+      const finalCar = {...tempCar, amortable: table};
+      setvehicle(finalCar)
    }
 
     const context = {
@@ -51,3 +54,21 @@ export const VehicleContext = createContext({
 
 /** helpers functions for the Vehicle context */
 
+
+function createAmortizationTable(car){
+  const amortizationTable = [];
+  let amortyear = car.yearTax;
+  let value = +car.value;
+  for (let i=100; i >= 10; i -= 10){
+    let yearvalue = Math.round(value * i / 100);
+    const year = {
+        year: amortyear,
+        valueTaxYear:  yearvalue,
+        coeficiente: i
+    }
+    amortizationTable.push(year);
+    amortyear++;
+
+  }
+  return amortizationTable;
+}

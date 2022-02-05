@@ -15,12 +15,7 @@ export function CarForm() {
 
   const handleChangeModel = (evt) => {
     evt.preventDefault();
-
     setmodelForm(evt.target.value);
-     // const carArr = cars.filter( car => car.model === evt.target.value)[0];
-      // const vehicle = carArr[0];
-    // console.log(carArr);
-
   }
 
 
