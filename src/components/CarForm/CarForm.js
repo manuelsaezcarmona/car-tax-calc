@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState} from 'react';
 import Form from 'react-bootstrap/Form'
-import { brands, fuels, sampleModels } from '../../services/data'
+import { brands, fuels } from '../../services/data'
 // import {getCars} from '../../services/cars.services'
 import {CarsContext} from '../../context/cars.context'
 
 
 export function CarForm() {
-  const {cars, updateCarts, models} = useContext(CarsContext);
+  const {updateCarts, models} = useContext(CarsContext);
   const [formQuery, setformQuery] = useState( {
       brand:'' , enrollmentDate:'', fuel:''
   });
+
+
 
   const handleChange = (evt) => {
     evt.preventDefault();
@@ -33,8 +35,8 @@ export function CarForm() {
   return (
 
    <div className='CarForm-container'>
-      {console.log(cars)}
-      {console.log(models)}
+
+
         <Form.Group className="car-form-item" >
           <Form.Label>Marca</Form.Label>
             <Form.Select name="brand"
@@ -71,9 +73,15 @@ export function CarForm() {
        <Form.Group className="car-form-item" >
           <Form.Label>Modelo</Form.Label>
             <Form.Select className= "car-form-item__select" >
-                {sampleModels.map((model => (
-                <option key={model} value={model}>{model}</option>
-              )))}
+
+              {models.length
+                ? models.map((model => (
+                    <option key={model} value={model}>{model}</option>
+                  )))
+                : <option key="model-empty" value="empty">Rellena los campos</option>
+              }
+
+
             </Form.Select>
       </Form.Group>
 
