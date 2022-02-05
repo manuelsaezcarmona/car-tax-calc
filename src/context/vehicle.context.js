@@ -8,24 +8,6 @@ export const VehicleContext = createContext({
   });
 
 
-/*
-  vehicle: {
-      brand: "Marca",
-      model: "Modelo",
-      period: "2015-2020",
-      cc: "Cilindrada",
-      cylinders: "Cilindros",
-      fuel: "Combustivle",
-      kw: "Potencia (kW)",
-      cvf: "Potencia Fiscal",
-      cv: "Potencia (CV)",
-      value: "Valor"
-      amortTable: [{year: 2019, value: 28.500 €}]
-      yearTax:
-  }
-  */
-
-
   export function VehicleContextProvider({children}){
    const [vehicle, setvehicle] = useState({});
 
@@ -54,13 +36,12 @@ export const VehicleContext = createContext({
 
 /** helpers functions for the Vehicle context */
 
-
 function createAmortizationTable(car){
   const amortizationTable = [];
   let amortyear = car.yearTax;
   let value = +car.value;
   for (let i=100; i >= 10; i -= 10){
-    let yearvalue = Math.round(value * i / 100);
+    let yearvalue = currency(Math.round(value * i / 100));
     const year = {
         year: amortyear,
         valueTaxYear:  yearvalue,
@@ -71,4 +52,9 @@ function createAmortizationTable(car){
 
   }
   return amortizationTable;
+}
+
+
+function currency(number){
+    return new Intl.NumberFormat('de-DE', {style: 'currency',currency: 'EUR', minimumFractionDigits: 2}).format(number);
 }
