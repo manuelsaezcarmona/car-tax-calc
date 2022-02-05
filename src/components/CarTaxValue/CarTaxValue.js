@@ -32,7 +32,7 @@ export  function CarTaxValue() {
        </tbody>
 
     </Table>
-    : <p>Elige un Coche para saber su amortizacion</p>
+    : <p className='alert alert-warning text-center'>Elige un Coche para saber su amortizacion</p>
    }
   </div>
   );
