@@ -1,11 +1,12 @@
 import { createContext } from "react";
 import PropTypes from 'prop-types';
 
-export const VehicleContext = createContext();
+export const VehicleContext = createContext({
+  });
 
 
 /*
-  vehicle: {
+  vehicle: {},
       brand: "Marca",
       model: "Modelo",
       period: "2015-2020",
@@ -16,15 +17,22 @@ export const VehicleContext = createContext();
       cvf: "Potencia Fiscal",
       cv: "Potencia (CV)",
       value: "Valor"
-  },
+
   year: null,
   assessmentTable: null,
   setVehicle: () => {} */
 
   export function VehicleContextProvider({children}){
+    // const [vehicle, setvehicle] = useState({});
 
+   const setCar = (cars, modelo) => {
+      const carArr = cars.filter( car => car.model === modelo);
+      console.log(carArr)
+   }
 
-    const context = {}
+    const context = {
+      setCar
+    }
     return (<VehicleContext.Provider value={context}>{children}</VehicleContext.Provider>);
   }
 

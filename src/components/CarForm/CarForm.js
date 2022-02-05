@@ -5,7 +5,7 @@ import {CarsContext} from '../../context/cars.context'
 
 
 export function CarForm() {
-  const {updateCarts, models} = useContext(CarsContext);
+  const {cars, updateCarts, models} = useContext(CarsContext);
   const [modelForm, setmodelForm] = useState('');
   const [formQuery, setformQuery] = useState( {
       brand:'' , enrollmentDate:'', fuel:''
@@ -14,7 +14,9 @@ export function CarForm() {
   const handleChangeModel = (evt) => {
     evt.preventDefault()
     setmodelForm(evt.target.value)
-    console.log(evt.target.value)
+     const carArr = cars.filter( car => car.model === evt.target.value);
+
+    console.log(carArr)
   }
 
 
@@ -81,8 +83,6 @@ export function CarForm() {
                 ? models.map((model => (<option key={model} value={model}>{model}</option>)))
                 : <option key="model-empty" value="empty">Rellena los campos</option>
               }
-
-
             </Form.Select>
       </Form.Group>
 
