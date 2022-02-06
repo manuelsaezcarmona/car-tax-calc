@@ -12,7 +12,8 @@ export async function getCars( brand, enrollmentDate, fuel) {
     return data;
 
   }catch(error){
-    console.error(`error en getCards: ${error.name} : ${error.message}`)
+    console.log(`error en getCards: ${error.name} : ${error.message}`)
+    return error.name;
   }
 
 }
