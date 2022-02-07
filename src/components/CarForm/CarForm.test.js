@@ -1,16 +1,18 @@
 import React from 'react';
-import { render, screen } from '../../test.utils';
+import { render, screen, fireEvent } from '../../test.utils';
 import {CarForm } from './CarForm'
 
 describe('Given the CarForm component', () =>{
   describe('When the Marca Group is Render', () => {
 
-    test('then componente render', () => {
+    test('then may change to another Brand', () => {
       render(<CarForm />);
 
-      const element = screen.getByTestId('marca');
-      console.log(element)
-      expect(element).toBeInTheDocument();
+      const option = screen.getByRole('option', {name: 'Alfa Romeo'});
+      fireEvent.change(option, { target: { value: 'BMW' } })
+
+      console.log(option.value)
+      expect(option.value).toBe('BMW');
 
     });
 
