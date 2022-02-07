@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <h1>Calcula tu coche</h1>
         <p>
-          Que todo <code>rula como tiene</code> que rular.
+          Averigua tu cuadro de valor Venal
         </p>
 
       </header>
