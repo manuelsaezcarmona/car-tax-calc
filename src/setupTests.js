@@ -7,5 +7,5 @@ import '@testing-library/jest-dom';
 // Install jest Mock for all the car app
 import fetchMock from 'jest-fetch-mock'
 
-// And in my test always mock the jest function
+// And in my test always mock the jest function.
 fetchMock.enableMocks();
