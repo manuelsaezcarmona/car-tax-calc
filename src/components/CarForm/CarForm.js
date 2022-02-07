@@ -53,6 +53,7 @@ useEffect(() => {
         <Form.Group className="car-form-item" >
           <Form.Label>Marca</Form.Label>
             <Form.Select name="brand"
+                data-testid="marca"
                 onChange={handleChange}
                 className= "car-form-item__select" >
               {brands.map((brand => (
