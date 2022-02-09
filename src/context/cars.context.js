@@ -17,13 +17,16 @@ export function CarsContextProvider({children}) {
   const [models, setModels] = useState([]);
 
   const updateCarts =  async (brand, enrollmentDate, fuel) => {
-    const carsUpdated = await getCars(brand, enrollmentDate, fuel);
-    const modelsUpdated = carsUpdated.cars.map(car => car.model)
+   const  {carsUpdated  , modelsUpdated } = await APIcars(brand, enrollmentDate, fuel)
+
       setCars(carsUpdated.cars);
       setModels(modelsUpdated);
+
+
   }
 
   const context = { cars, updateCarts, models }
+
   return (<CarsContext.Provider value={context}>{children}</CarsContext.Provider>);
 }
 
@@ -33,3 +36,13 @@ CarsContextProvider.propTypes = {
     PropTypes.node
   ]).isRequired
 };
+
+
+export  async function APIcars(brand, enrollmentDate, fuel) {
+   const carsUpdated = await getCars(brand, enrollmentDate, fuel);
+    const modelsUpdated = carsUpdated.cars.map(car => car.model)
+    return {
+      carsUpdated,
+      modelsUpdated
+    }
+}
