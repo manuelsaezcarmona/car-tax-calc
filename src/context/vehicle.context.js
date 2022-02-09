@@ -13,10 +13,12 @@ export const VehicleContext = createContext({
 
    const setCar = (cars, modelo) => {
       const car = cars.filter( car => car.model === modelo)[0];
+      console.log(car);
       const tempCar = {...car,
         yearTax: +car.period.slice(0, 4),
         labelfuel: setFuelLabel(car.fuel)
       }
+      console.log(tempCar);
       const table = createAmortizationTable(tempCar);
       const finalCar = {...tempCar, amortable: table};
       setvehicle(finalCar)

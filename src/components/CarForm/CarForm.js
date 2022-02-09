@@ -31,7 +31,7 @@ useEffect(() => {
   const handleChange = (evt) => {
     evt.preventDefault();
     setformQuery({...formQuery, [evt.target.name]: evt.target.value});
-    console.log(evt.target.value)
+    // console.log(evt.target.value)
   }
 
   useEffect( () => {
