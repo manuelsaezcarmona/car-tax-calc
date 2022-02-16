@@ -1,6 +1,6 @@
 /* eslint-disable react/function-component-definition */
 
-/* eslint-disable react/jsx-filename-extension */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { render as rtlRender } from '@testing-library/react';
