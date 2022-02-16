@@ -2,8 +2,6 @@
 import React  from "react"
 import ReactDOM from "react-dom"
 import App from "./App"
-import {CarsContextProvider} from './context/cars.context'
-import {VehicleContextProvider} from './context/vehicle.context'
 
 // mocks react-dom and its render method
 // so that we can assert that render is
@@ -25,11 +23,9 @@ test("renders with App and root div", () => {
 
   expect(ReactDOM.render).toHaveBeenCalledWith(
     <React.StrictMode>
-      <CarsContextProvider>
-        <VehicleContextProvider >
+
           <App />
-        </VehicleContextProvider>
-    </CarsContextProvider>
+
     </React.StrictMode>
   , root)
 })

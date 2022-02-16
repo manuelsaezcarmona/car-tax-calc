@@ -3,17 +3,11 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
-import {CarsContextProvider} from './context/cars.context'
-import {VehicleContextProvider} from './context/vehicle.context'
 // import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CarsContextProvider>
-      <VehicleContextProvider >
-        <App />
-      </VehicleContextProvider>
-    </CarsContextProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('swipoo')
 );
