@@ -8,27 +8,31 @@ export const VehicleContext = createContext({
   });
 
 
-  export function VehicleContextProvider({children}){
+  export function VehicleContextProvider(){
    const [vehicle, setvehicle] = useState({});
 
    const setCar = (cars, modelo) => {
       const car = cars.filter( car => car.model === modelo)[0];
-      console.log(car);
+
       const tempCar = {...car,
         yearTax: +car.period.slice(0, 4),
         labelfuel: setFuelLabel(car.fuel)
       }
-      console.log(tempCar);
+
       const table = createAmortizationTable(tempCar);
       const finalCar = {...tempCar, amortable: table};
       setvehicle(finalCar)
    }
 
-    const context = {
-      vehicle,
-      setCar
-    }
-    return (<VehicleContext.Provider value={context}>{children}</VehicleContext.Provider>);
+    const contexto = {vehicle, setCar };
+
+     const getVehicleProvider = ({children}) => (
+    <VehicleContext.Provider value={contexto}>{children}</VehicleContext.Provider>
+  )
+
+    return {setCar, getVehicleProvider} ;
+
+
   }
 
   VehicleContextProvider.propTypes = {
