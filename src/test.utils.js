@@ -1,6 +1,4 @@
-/* eslint-disable react/function-component-definition */
 
-/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { render as rtlRender } from '@testing-library/react';
@@ -13,13 +11,14 @@ function render(component) {
 
   function Wrapper({ children }) {
     const { getProvider: CarsProvider } = CarsContextProvider()
+    const {getVehicleProvider: VehicleProvider }= VehicleContextProvider();
 
     return (
 
         <CarsProvider>
-          <VehicleContextProvider >
+          <VehicleProvider >
              {children}
-          </VehicleContextProvider>
+          </VehicleProvider>
         </CarsProvider>
  );
   }

@@ -24,6 +24,7 @@ export function CarsContextProvider() {
 
     setCars(carsUpdated.cars);
     setModels(modelsUpdated);
+
   }
 
   const context = { cars, updateCarts, models }

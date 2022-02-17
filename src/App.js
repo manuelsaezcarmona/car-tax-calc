@@ -6,11 +6,14 @@ import { CarsContextProvider } from './context/cars.context'
 import { VehicleContextProvider } from './context/vehicle.context'
 
 function App() {
-  const { getProvider: CarsProvider } = CarsContextProvider()
+  const { getProvider: CarsProvider } = CarsContextProvider();
+
+const {getVehicleProvider: VehicleProvider }= VehicleContextProvider();
+
 
   return (
     <CarsProvider>
-      <VehicleContextProvider>
+      <VehicleProvider>
         <Container fluid>
           <header className="App-header">
             <h1>Calcula tu coche</h1>
@@ -21,7 +24,7 @@ function App() {
           </header>
           <TaxCalcPage />
         </Container>
-      </VehicleContextProvider>
+      </VehicleProvider>
     </CarsProvider>
   );
 }

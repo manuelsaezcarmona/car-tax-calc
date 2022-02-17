@@ -1,5 +1,4 @@
-import { waitFor } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
+// import { waitFor } from '@testing-library/react';
 // import { Children, useContext } from 'react';
 import { getCars } from '../services/cars.services';
 import {CarsContextProvider} from './cars.context'
@@ -25,9 +24,6 @@ jest
   }))
 
 
-
-
-
 describe ('given the Cars Context', () => {
 
 
@@ -51,7 +47,7 @@ describe ('given the Cars Context', () => {
     const { updateCarts } = CarsContextProvider()
 
     await updateCarts("audi", "2008-10-30", "G")
-  // el metodo waitFor sirvce para cuando tenemos una funcion asincrona
+  // el metodo waitFor sirve para cuando tenemos una funcion asincrona
   // Se espere a que se termine de ejecutar esta funcion , en este caso getCars
   // await waitFor(()=> expect(getCars).toBeCalledTimes(1))
     expect(getCars).toBeCalledTimes(1)
@@ -75,34 +71,5 @@ describe ('given the Cars Context', () => {
       // console.log(mockDispatch.mock.calls[1][0][0]);
       expect(mockDispatch.mock.calls[1][0][0]).toBe('Allroad Quattro 2.7 TDI Tiptronic DPF')
   })
-
-  // test( 'El contexto presenta valores iniciales', () => {
-
-  // })
-
-
-/* https://falecci.dev/es/unit-testing-react-hooks/ */
-
-
-  // test( 'Debde llamar a Update Cars en el context set cars Models', () => {
-  //     const data = {cars:[
-  //      {
-  //     "brand": "Audi",
-  //     "model": "Allroad Quattro 2.7 TDI Tiptronic DPF",
-  //     "period": "2008-",
-  //     "cc": "2698",
-  //     "cylinders": "6",
-  //     "fuel": "D",
-  //     "kw": "140",
-  //     "cvf": "18,75",
-  //     "cv": "190",
-  //     "value": "45000"
-  //   }
-  //   ]}
-
-
-  //   console.log(CarsContextProvider.propTypes.children);
-
-  // })
 
 })

@@ -8,27 +8,32 @@ export const VehicleContext = createContext({
   });
 
 
-  export function VehicleContextProvider({children}){
+  export function VehicleContextProvider(){
    const [vehicle, setvehicle] = useState({});
 
    const setCar = (cars, modelo) => {
       const car = cars.filter( car => car.model === modelo)[0];
-      console.log(car);
+
       const tempCar = {...car,
         yearTax: +car.period.slice(0, 4),
         labelfuel: setFuelLabel(car.fuel)
       }
-      console.log(tempCar);
+
       const table = createAmortizationTable(tempCar);
       const finalCar = {...tempCar, amortable: table};
+
       setvehicle(finalCar)
    }
 
-    const context = {
-      vehicle,
-      setCar
-    }
-    return (<VehicleContext.Provider value={context}>{children}</VehicleContext.Provider>);
+    const contexto = {vehicle, setCar };
+
+     const getVehicleProvider = ({children}) => (
+    <VehicleContext.Provider value={contexto}>{children}</VehicleContext.Provider>
+  )
+
+    return {setCar, getVehicleProvider} ;
+
+
   }
 
   VehicleContextProvider.propTypes = {
@@ -41,7 +46,7 @@ export const VehicleContext = createContext({
 
 /** helpers functions for the Vehicle context */
 
-function createAmortizationTable(car){
+export function createAmortizationTable(car){
   const amortizationTable = [];
   let amortyear = car.yearTax;
   let value = +car.value;
@@ -60,11 +65,11 @@ function createAmortizationTable(car){
 }
 
 
-function currency(number){
+export function currency(number){
     return new Intl.NumberFormat('de-DE', {style: 'currency',currency: 'EUR', minimumFractionDigits: 2}).format(number);
 }
 
-function setFuelLabel(fuel){
+export function setFuelLabel(fuel){
   switch (fuel) {
     case 'D':
       return 'Diesel'
