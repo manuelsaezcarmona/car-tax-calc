@@ -12,10 +12,11 @@ describe('Given the CarForm component', () =>{
       const option = screen.getByRole('option', {name: 'Alfa Romeo'});
       fireEvent.change(option, { target: { value: 'BMW' } })
 
-      console.log(option.value)
+//      console.log(option.value)
       expect(option.value).toBe('BMW');
 
     });
 
   })
 })
+

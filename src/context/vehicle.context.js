@@ -21,6 +21,7 @@ export const VehicleContext = createContext({
 
       const table = createAmortizationTable(tempCar);
       const finalCar = {...tempCar, amortable: table};
+
       setvehicle(finalCar)
    }
 

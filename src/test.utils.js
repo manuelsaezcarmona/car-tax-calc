@@ -11,13 +11,14 @@ function render(component) {
 
   function Wrapper({ children }) {
     const { getProvider: CarsProvider } = CarsContextProvider()
+    const {getVehicleProvider: VehicleProvider }= VehicleContextProvider();
 
     return (
 
         <CarsProvider>
-          <VehicleContextProvider >
+          <VehicleProvider >
              {children}
-          </VehicleContextProvider>
+          </VehicleProvider>
         </CarsProvider>
  );
   }
