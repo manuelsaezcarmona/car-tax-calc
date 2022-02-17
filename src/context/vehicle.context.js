@@ -46,7 +46,7 @@ export const VehicleContext = createContext({
 
 /** helpers functions for the Vehicle context */
 
-function createAmortizationTable(car){
+export function createAmortizationTable(car){
   const amortizationTable = [];
   let amortyear = car.yearTax;
   let value = +car.value;
@@ -65,11 +65,11 @@ function createAmortizationTable(car){
 }
 
 
-function currency(number){
+export function currency(number){
     return new Intl.NumberFormat('de-DE', {style: 'currency',currency: 'EUR', minimumFractionDigits: 2}).format(number);
 }
 
-function setFuelLabel(fuel){
+export function setFuelLabel(fuel){
   switch (fuel) {
     case 'D':
       return 'Diesel'
